@@ -1,19 +1,29 @@
 <form class="form-horizontal">
 	<div class="form-group">
-		<label for="1" class="col-sm-4 control-label">Masked Input using <code>NgModel</code></label>
+		<label class="col-sm-4 control-label">Masked Input using <code>NgModel</code></label>
     <form [formGroup]="customerForm">
     <div class="col-sm-8 input-group" >
       <label>First Name: </label>
-      <input id="1" type="text"  formControlName="firstname"/>
+      <input type="text"  formControlName="firstname"/>
       <br />
             <label>Last Name: </label>
-              <input id="1" type="text" formControlName="lastname"/>
+              <input type="text" formControlName="lastname"/>
       <br />
-
+  <div formGroupName="emailGroup">
             <label>Email: </label>
-              <input id="1" type="text" formControlName="email"/>
+              <input type="text" formControlName="email"/>
       <br />
 
+                  <label>Re-Enter Email: </label>
+              <input type="text" formControlName="reenteremail"/>
+      <br />
+      
+  </div>
+  <div formArrayName="phnoArray">
+    <label> Phone: </label>
+    <input formControlName="0"/>
+  </div>
+  <!-- <span>{{ customForm.get('emailGroup.email').error }}</span> -->
     </div>
     <hr />
     <span>Value: {{ customerForm.value | json }}</span><br />
@@ -22,6 +32,7 @@
     <span>Touched: {{ customerForm.touched }}</span><br />
     <span>validity: {{ customerForm.valid }}</span><br />
     <button (click)="populateData()">set vlaue</button>
+    <button (click)="addField()">Add Field</button>
     </form>
   </div>
 
